@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LyricBridge AI</title>
+<meta name="description" content="Drop in a song in any language. LyricBridge AI picks up the lyrics with Whisper in your browser, translates them into English with their meaning intact, and exports subtitles.">
+<meta name="theme-color" content="#FF4FA0">
+<meta property="og:title" content="LyricBridge AI">
+<meta property="og:description" content="Song lyrics in any language, picked up by Whisper in your browser and translated into English for meaning. Export SRT and VTT subtitles.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231E0E16'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23362029' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%23FFC72C'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23FF4FA0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@500&family=Shrikhand&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#studio">Skip to the studio</a>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="LyricBridge AI, back to the top">LyricBridge</a>
+  <nav class="top-nav" aria-label="Sections">
+    <a class="pill" href="#how">How it works</a>
+    <a class="pill" href="#studio">Studio</a>
+    <a class="pill" href="#models">Models</a>
+  </nav>
+  <a class="pill pill-ink" href="#studio">Translate a song</a>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="heroTitle">
+    <h1 class="hero-word" id="heroTitle"><span class="hw hw-1">Lyric</span><span class="hw hw-2">Bridge</span><span class="sr-only"> AI: song lyrics in any language, translated into English</span></h1>
+    <div class="hero-vinyl" aria-hidden="true">
+      <div class="vinyl"><div class="vinyl-label"><b>LB</b><small>Side A · original<br>Side B · English</small></div></div>
+    </div>
+    <p class="sticker">Lyrics picked up from the song</p>
+    <p class="round-badge">Runs in your browser</p>
+    <span class="bubble bb1" lang="es" aria-hidden="true">¡Hola!</span>
+    <span class="bubble bb2" lang="hi" aria-hidden="true">नमस्ते</span>
+    <span class="bubble bb3" lang="ja" aria-hidden="true">こんにちは</span>
+    <span class="bubble bb4" lang="fr" aria-hidden="true">Bonjour</span>
+    <span class="bubble bb5" lang="ko" aria-hidden="true">안녕</span>
+    <div class="hero-foot">
+      <p class="hero-copy">Drop in a song in any language. LyricBridge picks up the lyrics, translates them into English with their meaning intact, and makes subtitles you can download.</p>
+      <div class="hero-cta">
+        <p class="hero-meta">Whisper · LLM<br>Python · Vercel</p>
+        <a class="pill pill-maiz pill-lg" href="#studio">Translate a song</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGE MARQUEE -->
+  <section class="marquee" aria-label="Some of the 99 languages Whisper understands">
+    <div class="mq-row"><div class="mq-track">
+      <ul><li lang="es">Español</li><li lang="hi">हिन्दी</li><li lang="mr">मराठी</li><li lang="fr">Français</li><li lang="ja">日本語</li><li lang="ko">한국어</li><li lang="pt">Português</li><li lang="de">Deutsch</li></ul>
+      <ul aria-hidden="true"><li lang="es">Español</li><li lang="hi">हिन्दी</li><li lang="mr">मराठी</li><li lang="fr">Français</li><li lang="ja">日本語</li><li lang="ko">한국어</li><li lang="pt">Português</li><li lang="de">Deutsch</li></ul>
+    </div></div>
+    <div class="mq-row mq-rev"><div class="mq-track">
+      <ul><li lang="it">Italiano</li><li lang="ta">தமிழ்</li><li lang="te">తెలుగు</li><li lang="bn">বাংলা</li><li lang="pa">ਪੰਜਾਬੀ</li><li lang="tr">Türkçe</li><li lang="ru">Русский</li><li lang="ar">العربية</li></ul>
+      <ul aria-hidden="true"><li lang="it">Italiano</li><li lang="ta">தமிழ்</li><li lang="te">తెలుగు</li><li lang="bn">বাংলা</li><li lang="pa">ਪੰਜਾਬੀ</li><li lang="tr">Türkçe</li><li lang="ru">Русский</li><li lang="ar">العربية</li></ul>
+    </div></div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="story" id="how" aria-labelledby="howTitle">
+    <div class="story-stick">
+      <h2 class="story-word" id="howTitle">How it works</h2>
+      <ol class="story-steps">
+        <li class="story-step">
+          <div class="story-text"><p class="story-time">0:00</p><h3>Drop the song in</h3><p>MP3, WAV, M4A or a video's soundtrack, in any language. The file stays on your device the whole time.</p></div>
+          <div class="story-art" aria-hidden="true">
+            <div class="art-card art-file"><p class="file-chip">♪ your-song.mp3 <span>3:12</span></p><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="art-caption">Any language · up to 10 minutes</p></div>
+          </div>
+        </li>
+        <li class="story-step">
+          <div class="story-text"><p class="story-time">0:04</p><h3>Whisper picks up the lyrics</h3><p>OpenAI's Whisper runs right in your browser. It works out the language and writes down every line with its timestamp.</p></div>
+          <div class="story-art" aria-hidden="true">
+            <div class="art-card art-lines"><p><b>0:04</b> Bajo la luna te esperé</p><p><b>0:08</b> con el corazón en la mano</p><p><b>0:13</b> y me importa un pepino el qué dirán</p><p class="art-caption">Detected: Spanish · 97%</p></div>
+          </div>
+        </li>
+        <li class="story-step">
+          <div class="story-text"><p class="story-time">0:13</p><h3>Meaning, not just words</h3><p>Idioms and slang are translated for what they mean, with a short note whenever a phrase has no English twin.</p></div>
+          <div class="story-art" aria-hidden="true">
+            <div class="art-card art-meaning"><p class="am-orig">me importa un pepino</p><p class="am-lit">a cucumber matters to me</p><p class="am-en">I couldn't care less</p><p class="am-note">Idiom: not caring at all</p></div>
+          </div>
+        </li>
+        <li class="story-step">
+          <div class="story-text"><p class="story-time">3:12</p><h3>Subtitles, ready to go</h3><p>Play the song with synced bilingual lyrics, fix any line by hand, then download SRT or VTT subtitles for your video.</p></div>
+          <div class="story-art" aria-hidden="true">
+            <div class="art-card art-srt"><pre>3
+00:00:13,400 --> 00:00:19,800
+y me importa un pepino el qué dirán
+and I couldn't care less what people say</pre><p class="art-caption"><span class="mini-pill">SRT</span><span class="mini-pill">VTT</span></p></div>
+          </div>
+        </li>
+      </ol>
+      <div class="story-pills" role="group" aria-label="Jump to a step">
+        <button class="story-pill" type="button" aria-current="true">0:00</button>
+        <button class="story-pill" type="button" aria-current="false">0:04</button>
+        <button class="story-pill" type="button" aria-current="false">0:13</button>
+        <button class="story-pill" type="button" aria-current="false">3:12</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO -->
+  <section class="studio" id="studio" aria-labelledby="studioTitle">
+    <div class="wrap">
+      <div class="studio-head">
+        <h2 class="script-title" id="studioTitle">The Studio</h2>
+        <p>Drop in a song, press translate, and watch the lyrics appear. Your audio stays on this device.</p>
+        <span class="chip" id="deviceBadge">Checking your device…</span>
+      </div>
+
+      <div class="studio-grid">
+        <!-- input -->
+        <div class="panel panel-in">
+          <div class="src-tabs" role="tablist" aria-label="What to translate">
+            <button class="src-tab lock" type="button" role="tab" data-src="audio" aria-selected="true" aria-controls="panelAudio">Song file</button>
+            <button class="src-tab lock" type="button" role="tab" data-src="text" aria-selected="false" aria-controls="panelText">Paste lyrics</button>
+          </div>
+
+          <div id="panelAudio" role="tabpanel">
+            <label class="dropzone" id="dropzone" for="fileInput" data-over="false" data-loaded="false">
+              <span class="dz-disc" aria-hidden="true"></span>
+              <span class="dz-title">Drop a song here</span>
+              <span class="dz-sub">or tap to choose · MP3, WAV, M4A, OGG, WEBM · up to 10 min</span>
+              <input class="sr-only lock" type="file" id="fileInput" accept="audio/*,video/mp4,video/webm">
+            </label>
+            <p class="file-name" id="fileName">No song yet</p>
+            <button class="link-btn lock" type="button" id="sampleBtn">No song handy? Try a 9-second sample clip (French speech)</button>
+          </div>
+
+          <div id="panelText" role="tabpanel" hidden>
+            <label class="field-label" for="textInput">Lyrics, one line per row</label>
+            <textarea id="textInput" class="lock" rows="7" placeholder="Paste the lyrics here, one line per row"></textarea>
+            <p class="hint">Pasted lyrics are translated by the LLM. Timed subtitles need a song file.</p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="langSelect">Song language</label>
+            <select id="langSelect" class="lock">
+              <option value="">Detect it for me</option>
+              <option value="es">Spanish</option><option value="hi">Hindi</option><option value="mr">Marathi</option>
+              <option value="fr">French</option><option value="ja">Japanese</option><option value="ko">Korean</option>
+              <option value="pt">Portuguese</option><option value="de">German</option><option value="it">Italian</option>
+              <option value="ta">Tamil</option><option value="te">Telugu</option><option value="bn">Bengali</option>
+              <option value="pa">Punjabi</option><option value="ur">Urdu</option><option value="gu">Gujarati</option>
+              <option value="kn">Kannada</option><option value="ml">Malayalam</option><option value="ar">Arabic</option>
+              <option value="ru">Russian</option><option value="tr">Turkish</option><option value="zh">Chinese</option>
+              <option value="id">Indonesian</option><option value="en">English</option>
+            </select>
+          </div>
+
+          <fieldset class="field">
+            <legend class="field-label">Whisper model</legend>
+            <div class="seg">
+              <label><input class="lock" type="radio" name="model" value="tiny"><span>Tiny <small>≈40 MB</small></span></label>
+              <label><input class="lock" type="radio" name="model" value="base" checked><span>Base <small>≈80 MB</small></span></label>
+              <label><input class="lock" type="radio" name="model" value="small"><span>Small <small>≈250 MB</small></span></label>
+            </div>
+            <p class="hint">Downloaded once, then cached in your browser. Bigger hears better through music.</p>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend class="field-label">Translation</legend>
+            <label class="choice"><input class="lock" type="radio" name="mode" value="llm" id="modeLlm" disabled><span><b>LLM, meaning first</b><small id="llmStatus" data-on="false">Checking the server…</small></span></label>
+            <label class="choice"><input class="lock" type="radio" name="mode" value="whisper" id="modeWhisper" checked><span><b>Whisper, on your device</b><small>Private and free. Translates sound to English directly.</small></span></label>
+          </fieldset>
+
+          <div class="actions">
+            <button class="pill pill-maiz pill-lg" type="button" id="startBtn" disabled><span>Translate this song</span> <i aria-hidden="true">→</i></button>
+            <button class="pill pill-ink" type="button" id="stopBtn" hidden>Stop</button>
+          </div>
+
+          <div class="progress" id="progress" data-active="false">
+            <ol class="steps" id="steps">
+              <li data-step="model" data-status="todo"><span class="step-name">Load Whisper</span><span class="step-detail"></span></li>
+              <li data-step="lang" data-status="todo"><span class="step-name">Find the language</span><span class="step-detail"></span></li>
+              <li data-step="lyrics" data-status="todo"><span class="step-name">Pick up the lyrics</span><span class="step-detail"></span></li>
+              <li data-step="translate" data-status="todo"><span class="step-name">Translate the meaning</span><span class="step-detail"></span></li>
+            </ol>
+            <div class="bar" aria-hidden="true"><span id="progBar"></span></div>
+            <p class="prog-msg" id="progMsg" aria-live="polite">Only lyric text is sent anywhere, and only when you use the LLM.</p>
+          </div>
+        </div>
+
+        <!-- output -->
+        <div class="panel panel-out">
+          <div class="now">
+            <div class="now-vinyl" id="nowVinyl" data-spin="false" aria-hidden="true"><span></span></div>
+            <div class="now-text">
+              <p class="now-label">Now playing <span class="ex-badge" id="exampleBadge">Example</span></p>
+              <p class="now-orig" id="nowOrig">Drop in a song to begin</p>
+              <p class="now-en" id="nowEn"></p>
+              <p class="now-note" id="nowNote" hidden></p>
+            </div>
+          </div>
+          <div class="player">
+            <button class="play" type="button" id="playBtn" aria-label="Play" data-playing="false"></button>
+            <span class="time" id="timeNow">0:00</span>
+            <input type="range" id="seek" min="0" max="0" step="0.1" value="0" aria-label="Song position">
+            <span class="time" id="timeTotal">0:00</span>
+            <audio id="audio" preload="metadata"></audio>
+          </div>
+          <div class="lyrics-head">
+            <p id="resultMeta">No lines yet.</p>
+            <button class="mini-btn" type="button" id="editToggle" aria-pressed="false" data-needs-rows>Edit lines</button>
+          </div>
+          <div class="lyrics-scroll" id="lyricsScroll" tabindex="0" aria-label="Lyrics">
+            <ol class="lyrics" id="lyrics"></ol>
+          </div>
+          <div class="export">
+            <button class="pill" type="button" id="exportSrtBoth" data-needs-timing>Bilingual SRT</button>
+            <button class="pill" type="button" id="exportSrtEn" data-needs-timing>English SRT</button>
+            <button class="pill" type="button" id="exportVtt" data-needs-timing>Bilingual VTT</button>
+            <button class="pill" type="button" id="copyBtn" data-needs-rows>Copy lyrics</button>
+            <button class="link-btn" type="button" id="exampleBtn">Show the example</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section class="models" id="models" aria-labelledby="modelsTitle">
+    <p class="models-word" aria-hidden="true">Models</p>
+    <div class="wrap">
+      <h2 class="models-title" id="modelsTitle">Pick your Whisper</h2>
+      <ul class="mcards">
+        <li class="mcard mc-cream">
+          <div class="mc-art" aria-hidden="true"><span class="disc" style="--d:34%"></span></div>
+          <div class="mc-row"><h3>Tiny</h3><p class="mc-size">≈40 MB</p></div>
+          <p>The quickest. Good for clear vocals and fast drafts.</p>
+          <div class="mc-row"><p class="dots" aria-label="Accuracy 1 of 3"><i class="on"></i><i></i><i></i></p><button class="mini-btn" type="button" data-use-model="tiny">Use Tiny</button></div>
+        </li>
+        <li class="mcard mc-pink">
+          <div class="mc-art" aria-hidden="true"><span class="disc" style="--d:52%"></span></div>
+          <div class="mc-row"><h3>Base</h3><p class="mc-size">≈80 MB</p></div>
+          <p>The everyday pick: quick, and steady with most songs.</p>
+          <div class="mc-row"><p class="dots" aria-label="Accuracy 2 of 3"><i class="on"></i><i class="on"></i><i></i></p><button class="mini-btn" type="button" data-use-model="base">Use Base</button></div>
+        </li>
+        <li class="mcard mc-red">
+          <div class="mc-art" aria-hidden="true"><span class="disc" style="--d:72%"></span></div>
+          <div class="mc-row"><h3>Small</h3><p class="mc-size">≈250 MB</p></div>
+          <p>Hears through the music best. Slower, and needs more memory.</p>
+          <div class="mc-row"><p class="dots" aria-label="Accuracy 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></p><button class="mini-btn" type="button" data-use-model="small">Use Small</button></div>
+        </li>
+        <li class="mcard mc-maiz">
+          <div class="mc-art mc-art-llm" aria-hidden="true"><span class="say">“pepino”</span><span class="say say-2">“couldn't care less”</span></div>
+          <div class="mc-row"><h3>LLM</h3><p class="mc-size" data-llm-state>Checking…</p></div>
+          <p>Translates the lyric text for meaning and explains idioms. Runs through a small Python API on Vercel.</p>
+          <div class="mc-row"><p class="dots" aria-label="Meaning-first translation"><i class="on"></i><i class="on"></i><i class="on"></i></p><button class="mini-btn" type="button" data-use-llm>Use the LLM</button></div>
+        </li>
+      </ul>
+      <p class="models-note">Sizes are approximate downloads. On a computer with WebGPU, Whisper runs on the graphics card and is several times faster.</p>
+    </div>
+  </section>
+
+  <!-- WALL -->
+  <section class="wall" id="wall" aria-labelledby="wallTitle">
+    <div class="wrap">
+      <h2 class="script-title" id="wallTitle">Lines that crossed the bridge</h2>
+      <p class="wall-sub">Example lines written for this demo, to show meaning winning over word-for-word.</p>
+      <ul class="polaroids">
+        <li class="pol pol-cream"><p class="pol-lang">Portuguese</p><p class="pol-orig" lang="pt">Saudade é o nome dessa canção</p><p class="pol-en">Longing is the name of this song</p><p class="pol-note">Saudade: a deep, nostalgic longing with no single English word.</p></li>
+        <li class="pol pol-pink"><p class="pol-lang">German</p><p class="pol-orig" lang="de">Ich verstehe nur Bahnhof</p><p class="pol-en">It's all Greek to me</p><p class="pol-note">Literally “I only understand train station”.</p></li>
+        <li class="pol pol-cream"><p class="pol-lang">Hindi</p><p class="pol-orig" lang="hi">बारिश में भीगी शाम, तेरा नाम</p><p class="pol-en">A rain-soaked evening, and your name</p></li>
+        <li class="pol pol-green"><p class="pol-lang">French</p><p class="pol-orig" lang="fr">Il pleut des cordes, je danse quand même</p><p class="pol-en">It's pouring, and I'm dancing anyway</p><p class="pol-note">“It's raining ropes” is French for heavy rain.</p></li>
+        <li class="pol pol-cream"><p class="pol-lang">Japanese</p><p class="pol-orig" lang="ja">夜明けまで歌おう</p><p class="pol-en">Let's sing until dawn</p></li>
+        <li class="pol pol-pink"><p class="pol-lang">Marathi</p><p class="pol-orig" lang="mr">पावसाच्या सरी, तुझी आठवण</p><p class="pol-en">Showers of rain, and the memory of you</p></li>
+        <li class="pol pol-cream"><p class="pol-lang">Korean</p><p class="pol-orig" lang="ko">별빛 아래 우리 둘</p><p class="pol-en">Just the two of us, under starlight</p></li>
+        <li class="pol pol-red"><p class="pol-lang">Spanish</p><p class="pol-orig" lang="es">Eres mi media naranja</p><p class="pol-en">You're my other half</p><p class="pol-note">Literally “my half orange”.</p></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot-band" aria-hidden="true"><div class="mq-track">
+    <ul><li>#LyricBridge</li><li>Meaning first</li><li>Any language</li><li>Sing along</li></ul>
+    <ul><li>#LyricBridge</li><li>Meaning first</li><li>Any language</li><li>Sing along</li></ul>
+  </div></div>
+  <div class="foot-grid">
+    <div class="foot-art" aria-hidden="true">
+      <div class="vinyl vinyl-sm"><div class="vinyl-label"><b>LB</b></div></div>
+      <span class="bubble bf1">♪</span><span class="bubble bf2" lang="es">¡Canta!</span>
+    </div>
+    <div class="receipt">
+      <div class="receipt-top"><p class="receipt-brand">LyricBridge</p><p class="receipt-no">Receipt #0099</p></div>
+      <p class="receipt-sub">Song lyrics, translated for meaning</p>
+      <dl class="receipt-lines">
+        <div><dt>Speech model</dt><dd>Whisper</dd></div>
+        <div><dt>Languages</dt><dd>99</dd></div>
+        <div><dt>Audio uploaded</dt><dd>None</dd></div>
+        <div><dt>Translation</dt><dd>Whisper or LLM</dd></div>
+        <div><dt>Subtitles</dt><dd>SRT · VTT</dd></div>
+      </dl>
+      <nav class="receipt-links" aria-label="Links">
+        <a href="#studio">Studio</a>
+        <a href="https://github.com/Vedantsg23/lyricbridge-ai" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://vedant-gadage.vercel.app" target="_blank" rel="noopener">Portfolio</a>
+      </nav>
+      <a class="pill pill-ink pill-block" href="#studio">Translate a song</a>
+      <p class="receipt-thanks">¡Gracias! Sing along.</p>
+      <p class="receipt-small">© <span data-year>2026</span> LyricBridge AI · Built by Vedant Gadage<br>Whisper by OpenAI · Transformers.js by Hugging Face</p>
+    </div>
+  </div>
+  <p class="foot-word" aria-hidden="true">LyricBridge</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
