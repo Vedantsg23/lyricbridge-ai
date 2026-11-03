@@ -79,6 +79,7 @@ function setRunning(on) {
   $$('#studio .lock').forEach(el => { el.disabled = on; });
 }
 function mb(bytes) { return (bytes / 1048576).toFixed(1); }
+function lines(n) { return `${n} line${n === 1 ? '' : 's'}`; }
 
 /* ---------------- LLM availability ---------------- */
 async function checkLlm() {
@@ -284,7 +285,7 @@ async function startAudioRun() {
     if (state.token !== token) return;
     fixTimings(state.rows, state.duration);
     const resolved = lang || language || 'en';
-    setStep('lyrics', 'done', `${state.rows.length} lines`);
+    setStep('lyrics', 'done', lines(state.rows.length));
     if (!state.rows.length) {
       setStep('translate', 'skip', 'nothing to translate');
       finish('No singing found. Try a bigger model or pick the language yourself.');
@@ -343,7 +344,7 @@ async function startTextRun() {
   resetSteps();
   setRunning(true);
   setStep('model', 'skip', 'not needed');
-  setStep('lyrics', 'done', `${lines.length} lines pasted`);
+  setStep('lyrics', 'done', `${lines.length === 1 ? '1 line' : `${lines.length} lines`} pasted`);
   const lang = state.language || '';
   setStep('lang', lang ? 'done' : 'skip', lang ? langName(lang) : 'the LLM works it out');
   setStep('translate', 'active', state.llm.provider);
@@ -378,7 +379,7 @@ function renderRows() {
   $$('[data-needs-rows]').forEach(b => { b.disabled = !rows.length; });
   const lang = state.example ? 'Spanish' : langName(state.detected?.code || state.language) ;
   $('#resultMeta').textContent = rows.length
-    ? `${rows.length} lines · ${state.example ? 'example' : lang} · ${state.example ? 'LLM translation' : state.engine}`
+    ? `${lines(rows.length)} · ${state.example ? 'example' : lang} · ${state.example ? 'LLM translation' : state.engine}`
     : (state.running ? 'Lines appear here as Whisper hears them.' : 'No lines yet.');
   list.innerHTML = '';
   if (!rows.length) {
